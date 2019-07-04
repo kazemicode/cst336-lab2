@@ -122,22 +122,22 @@ function checkLetter(letter)
       updateWord(positions, letter);
       
       // check to see if this is a winning guess
-//       if(!board.includes('_'))
-//       {
-//         // Store past guessed words
-//         if( localStorage.getItem("guessed") == null)
-//           {
-//             localStorage.setItem("guessed", selectedWord);
-//           }
-//         else
-//           {
-//           localStorage.setItem("guessed", localStorage.getItem("guessed") + " " + selectedWord);
-//           }
-//         $("#guessed").empty();
-//         $("#guessed").append(localStorage.getItem("guessed"));
-//         // end game in win state
-//         endGame(true);
-//       }
+      if(!board.includes('_'))
+      {
+        // Store past guessed words
+        if( localStorage.getItem("guessed") == null)
+          {
+            localStorage.setItem("guessed", selectedWord);
+          }
+        else
+          {
+          localStorage.setItem("guessed", localStorage.getItem("guessed") + " " + selectedWord);
+          }
+        $("#guessed").empty();
+        $("#guessed").append(localStorage.getItem("guessed"));
+        // end game in win state
+        endGame(true);
+      }
     }
   else
     {
