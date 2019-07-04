@@ -5,15 +5,24 @@ var board;
 var remainingGuesses;
 var words = [{word: "snake", hint: "It's a reptile"},
              {word: "monkey", hint: "It's a mammal"},
-             {word: "beetle", hint: "It's a reptile"}];
+             {word: "beetle", hint: "It's a insect"}];
 var alphabet = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 
                 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ]
-
+var hintClicked = false;
 
 // LISTENERS
 window.onload = startGame();
 
-$(".letter").click(function(){
+$(".hintBtn").click(function() {
+  console.log("triggered hint");
+  giveHint();
+  hintClicked = true;
+  remainingGuesses--;
+  updateMan();
+});
+
+$(".letter").on("click", function() {
+  console.log($(this));
   checkLetter($(this).attr("id"));
   disableButton($(this)); 
 });
@@ -22,13 +31,7 @@ $(".replayBtn").on("click", function() {
   location.reload();
 });
 
-$(".hintBtn").on("click", function() {
-  remainingGuesses--;
-  updateMan();
-  document.querySelector('.hintBtn').style.display = 'none';
-  document.querySelector('.hint').style.display = 'inline';
-  
-});
+
 
 
 // FUNCTIONS
@@ -77,6 +80,10 @@ function updateBoard()
   $("#word").append("<br><br>");
   $("#word").append("<span class='hint'>Hint: " + selectedHint + "</span>");
   $("#word").append("<button class='hintBtn btn btn-success'>Hint? </button>");
+  if(hintClicked)
+    {
+      giveHint();
+    }
   $("#word").append("<br><br>");
 }
 
@@ -100,7 +107,7 @@ function disableButton(btn)
 // check if letter is in the word and put them in the correct place
 function checkLetter(letter)
 {
-  var positions = new Array();
+  var positions = [];
   
   //put all positions the letter exists in in the array
   for(var i = 0; i < selectedWord.length; i++){
@@ -115,22 +122,22 @@ function checkLetter(letter)
       updateWord(positions, letter);
       
       // check to see if this is a winning guess
-      if(!board.includes('_'))
-      {
-        // Store past guessed words
-        if( localStorage.getItem("guessed") == null)
-          {
-            localStorage.setItem("guessed", selectedWord);
-          }
-        else
-          {
-          localStorage.setItem("guessed", localStorage.getItem("guessed") + " " + selectedWord);
-          }
-        $("#guessed").empty();
-        $("#guessed").append(localStorage.getItem("guessed"));
-        // end game in win state
-        endGame(true);
-      }
+//       if(!board.includes('_'))
+//       {
+//         // Store past guessed words
+//         if( localStorage.getItem("guessed") == null)
+//           {
+//             localStorage.setItem("guessed", selectedWord);
+//           }
+//         else
+//           {
+//           localStorage.setItem("guessed", localStorage.getItem("guessed") + " " + selectedWord);
+//           }
+//         $("#guessed").empty();
+//         $("#guessed").append(localStorage.getItem("guessed"));
+//         // end game in win state
+//         endGame(true);
+//       }
     }
   else
     {
@@ -175,6 +182,12 @@ function endGame(win) // win is boolean
     {
       $('#lost').show();
     }
+}
+
+function giveHint()
+{
+  document.querySelector('.hintBtn').style.display = 'none';
+  document.querySelector('.hint').style.display = 'inline';  
 }
 
 

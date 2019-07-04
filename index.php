@@ -24,7 +24,6 @@
             
           </div>
           
-          
           <div id="letters">
             
           </div>
