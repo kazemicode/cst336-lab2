@@ -22,7 +22,7 @@ $(".hintBtn").click(function() {
 });
 
 $(".letter").on("click", function() {
-  console.log($(this));
+  console.log("button cllicked: " + this);
   checkLetter($(this).attr("id"));
   disableButton($(this)); 
 });
@@ -57,7 +57,11 @@ function initBoard()
   for(var letter in selectedWord)
     {
       board.push('_');
-    }   
+    } 
+  hideHint();
+  $("#hintText").append(" " + selectedHint);
+  
+ 
 }
 
 // Picks a random word from the array using a pseudorandom number generator
@@ -77,14 +81,10 @@ function updateBoard()
   {
     $("#word").append(board[i] + " ");
   }
-  $("#word").append("<br><br>");
-  $("#word").append("<span class='hint'>Hint: " + selectedHint + "</span>");
-  $("#word").append("<button class='hintBtn btn btn-success'>Hint? </button>");
   if(hintClicked)
     {
       giveHint();
     }
-  $("#word").append("<br><br>");
 }
 
 // create the letter buttons iteratively
@@ -187,7 +187,13 @@ function endGame(win) // win is boolean
 function giveHint()
 {
   document.querySelector('.hintBtn').style.display = 'none';
-  document.querySelector('.hint').style.display = 'inline';  
+  document.querySelector('#hintText').style.display = 'inline';  
+}
+
+function hideHint()
+{
+  document.querySelector('.hintBtn').style.display = 'inline';
+  document.querySelector('#hintText').style.display = 'none';  
 }
 
 

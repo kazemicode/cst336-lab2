@@ -16,9 +16,8 @@
   font-size: 1.8em;
 }
 
-.hint {
+#hintText {
   font-size: 0.6em !important;
-  display: none;
 }
 .btn {
   padding: 7px 7px !important;

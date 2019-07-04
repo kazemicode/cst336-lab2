@@ -19,24 +19,18 @@
           <h1>Hangman</h1>
           <h4>Javascript Edition</h4>
           </header>
+          <div id = "hintPanel"><button class='hintBtn btn btn-success'>Hint? </button>
+          <div id = "hintText">Hint:</div></div>
         
-          <div id="word">
-            
-          </div>
+          <div id="word"></div>
           
-          <div id="letters">
-            
-          </div>
+          <div id="letters"></div>
           
           <div id="man">
             <img src="img/stick_0.png" id="hangImg" alt="Hangman image">
-            
-            
           </div>
         
-        <div id ="guessed">
-          
-        </div>
+        <div id ="guessed"></div>
         
         <div id = "won">
           <h2>You won!</h2>
