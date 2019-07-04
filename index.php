@@ -19,10 +19,13 @@
           <h1>Hangman</h1>
           <h4>Javascript Edition</h4>
           </header>
-          <div id = "hintPanel"><button class='hintBtn btn btn-success'>Hint? </button>
-          <div id = "hintText">Hint:</div></div>
         
           <div id="word"></div>
+        
+          <div id = "hintPanel">
+            <div id = "hintText"><br>Hint:</div>
+            <br><button class='hintBtn btn btn-success'>Hint? </button><br><br>
+          </div>
           
           <div id="letters"></div>
           

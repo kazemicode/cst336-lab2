@@ -14,7 +14,6 @@ var hintClicked = false;
 window.onload = startGame();
 
 $(".hintBtn").click(function() {
-  console.log("triggered hint");
   giveHint();
   hintClicked = true;
   remainingGuesses--;
@@ -22,7 +21,6 @@ $(".hintBtn").click(function() {
 });
 
 $(".letter").on("click", function() {
-  console.log("button cllicked: " + this);
   checkLetter($(this).attr("id"));
   disableButton($(this)); 
 });

@@ -12,8 +12,12 @@
   border-width: 1px;
 }
 
-#word, #guessed {
+#guessed {
   font-size: 1.8em;
+}
+
+#word {
+  font-size: 3.5em !important;
 }
 
 #hintText {
